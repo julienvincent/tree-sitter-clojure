@@ -145,6 +145,12 @@ const KEYWORD_MARK =
 const AUTO_RESOLVE_MARK =
       token("::");
 
+const STRING_CONTENT = 
+      seq(repeat1(choice(
+            regex('[^"\\\\]'),
+            seq("\\",
+                regex(".")))));
+
 const STRING =
       token(seq('"',
                 repeat(regex('[^"\\\\]')),
@@ -332,8 +338,12 @@ module.exports = grammar({
     _kwd_marker: $ =>
     choice(KEYWORD_MARK, AUTO_RESOLVE_MARK),
 
-    str_lit: $ =>
-    STRING,
+    str_lit: $ => seq('"',
+        optional($.str_content_lit),
+      '"'),
+
+    str_content_lit: $ =>
+      STRING_CONTENT,
 
     char_lit: $ =>
     CHARACTER,

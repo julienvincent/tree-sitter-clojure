@@ -1911,6 +1911,7 @@
   {
     "type": "source",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -2204,9 +2205,24 @@
     }
   },
   {
-    "type": "str_lit",
+    "type": "str_content_lit",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "str_lit",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "str_content_lit",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "sym_lit",
@@ -3371,6 +3387,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
@@ -3432,6 +3452,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\",
     "named": false
   },
   {
